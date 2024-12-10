@@ -1,0 +1,223 @@
+%packages
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+\usepackage{amsfonts, amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{subcaption}
+\usepackage{cleveref}
+\usepackage{cancel}
+\usepackage{chngcntr}
+\usepackage{ifthen}
+\usepackage{enumitem}
+
+%setups
+\setlist[itemize]{topsep=-0.25em}
+\setlist[enumerate]{topsep=-0.25em}
+\setlist[description]{topsep=-0.25em}
+
+
+\setlength{\parskip}{1em}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+\lstset{language=Matlab,%
+	basicstyle=\scriptsize,
+	breaklines=true,%
+   	morekeywords={matlab2tikz},
+    	keywordstyle=\color{blue},%
+    	morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+   	identifierstyle=\color{black},%
+    	stringstyle=\color{mylilas},
+    	commentstyle=\color{mygreen},%
+    	showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    	numbers=left,%
+    	numberstyle={\tiny \color{black}},% size of the numbers
+    	numbersep=9pt, % this defines how far the numbers are from the text
+    	emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+}
+
+%\newtheorem{definition}{Definition}
+%\newtheorem{condition}{Condition}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{algorithm}{Algorithm}
+%\newtheorem{claim}{Claim}
+
+%\numberwithin{equation}{section}
+%\numberwithin{figure}{section}
+%\numberwithin{theorem}{section}
+%\numberwithin{definition}{section}
+%\numberwithin{claim}{section}
+
+
+%new counters
+\newcounter{code}
+%\newcounter{code}[section]
+%\newcounter{remark}[section]
+%\newcounter{example}[section]
+%\newcounter{confession}[section]
+
+
+%renewed commands
+\renewcommand{\labelitemii}{$\diamond$}
+\renewcommand\lstlistingname{Code}{}
+
+
+%useful commands
+\def\zero{\vec{0}}
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\def\mb#1{\mathbf{#1}}
+\def\mbi#1{\textbf{\em{#1}}}
+\def\bsym#1{\boldsymbol{#1}}
+\def\red#1{\textcolor{red}{#1}}
+\def\blue#1{\textcolor{blue}{#1}}
+\def\purp#1{\textcolor{magenta}{#1}}
+\def\wt#1{\widetilde{#1}}
+\def\ol#1{\overline{#1}}
+\def\DEF{:=}
+\def\PN{\mathbb P^N}
+\def\noinbf#1{\noindent\textbf{#1}}
+\def\bookref#1{\purp{\mbi{Book reference: #1}}}
+\def\fv#1{\mb{#1}}
+\def\fm#1{\mb{#1}}
+\def\fl#1{{\rm fl}\hspace{-2pt}\left({#1}\right)}
+
+\newcommand{\mat}[2] [cccccccccc]{ \left( \begin{array}{#1} #2\\ \end{array}\right) }
+\newcommand{\detA}[2] [ccccccccc]{ \left| \begin{array}{#1} #2\\ \end{array}\right| }
+\newcommand{\cbra}[1]{ \left\{ {#1}\right\} }
+\newcommand{\paren}[1]{ \left( {#1}\right) }
+\newcommand{\eval}[2]{\biggr|_{#1}^{#2}}
+\newcommand{\deriv}[2]{\frac{d{#1}}{d{#2}}}
+\newcommand{\nderiv}[3]{\frac{d^{#3}{#1}}{d{#2}^{#3}}}
+\newcommand{\pderiv}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pnderiv}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
+\newcommand{\pmderiv}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
+\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\norm}[1]{\left\| {#1} \right\|}
+\newcommand{\proj}[2]{{\rm proj}_{#1}({#2})}
+\newcommand{\argmin}[0]{\text{argmin}}
+\newcommand{\vspan}[1]{{\rm span}\cbra{#1}}
+\newcommand{\supp}[1]{{\rm supp}\left({#1}\right)}
+\newcommand{\range}[1]{\mathcal R\!\left({#1}\right)}
+\newcommand{\nullsp}[1]{\mathcal N\!\left({#1}\right)}
+\newcommand{\diag}[1]{\text{diag}(#1)}
+\newcommand{\tr}[1]{\text{tr}(#1)}
+\newcommand{\rref}[1]{\text{rref}#1}
+\newcommand{\rank}[1]{\text{rank}\paren{#1}}
+
+\newcommand{\includecode}[2]{
+	\refstepcounter{code}
+	\lstinputlisting[caption=#2,label=#1]{#1}
+}
+
+
+%defining colors
+\definecolor{mygreen}{RGB}{28,150,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+%new environments
+\newenvironment{lobj}{
+	\begin{framed}
+	\noinbf{Learning objectives:} 
+	\begin{itemize}
+}
+{
+	\end{itemize}
+	\vspace{1em}
+	\end{framed}
+}
+
+%\newenvironment{remark}[1][]{
+%	\refstepcounter{remark}\par
+% 	\noindent \textbf{Remark~\theremark.#1} 
+%}
+%{}
+
+%\newenvironment{confession}[1][]{
+%	\refstepcounter{confession}\par
+% 	\noindent \textbf{Confession~\theconfession.#1} 
+%}
+%{}
+
+%\newenvironment{example}[1][]{
+%	\refstepcounter{example}\par
+% 	\noindent \textbf{Example~\theexample.#1} 
+%}
+%{\hfill $\blacksquare$}
+
+
+%\numberwithin{remark}{section}
+%\numberwithin{example}{section}
+%\numberwithin{confession}{section}
+
+\newenvironment{solution}{
+	\color{blue}
+	\vspace*{1em} \hrule\vspace*{0.5em} 
+	{\sf Solution.}
+}
+{\vspace*{0.75em}\hrule}
+
+\newcommand{\MATHTitle}{
+\large \textsf{\textbf{MATH 121 $\cdot$ SPRING 2023}}\\[0.5em]
+}
+
+\newcommand{\HWTitle}[1]{
+\begin{center}
+	\MATHTitle
+	\textsf{Homework #1}
+\end{center}
+}
+
+\newcommand{\ReportTitle}[1]{
+\begin{center}
+	\MATHTitle
+	\Large{\textsf{Report #1}}
+\end{center}
+}
+
+\newcommand{\ExamTitle}[1]{
+\begin{center}
+	\MATHTitle
+	\textsf{Examination #1}
+\end{center}
+}
+
+\def\StatementCanvas{
+{\small \sf 
+\textbf{Instructions:} See Canvas assignment posting for information about submission process and due dates.
+}}
+
+\def\PledgeStatement{
+{\small \sf 
+\textbf{Pledged problems}: 
+This problem set contains pledged problems.
+You may not collaborate with other students or discuss these problem with anyone but your instructor.  
+You may not consult any source other than approved textbooks, lecture notes or your in-class notes to help you with the problem.}
+}
+
+\def\CompStatement{
+{\small \sf 
+\textbf{Computational problems}: 
+This problem set contains computational problems. 
+Reminder that you will need to submit working code for credit.
+%You will need to write MATLAB code to solve these problems. 
+%Along with a pdf of your solutions, you will have to upload your code as a \texttt{*.m} file.
+%Failure to provide code will result in no credit.
+}
+}
+\newcommand{\Points}[1]{
+\begin{center}
+{\sf This assignment is worth a total of #1 points.}
+\end{center}
+}
